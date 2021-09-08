@@ -18,7 +18,7 @@ mkdir RenameVCF/oldName # creo una cartella dove salvare i vcf rinominati
 i=1
 PICARD="/home/albe/miniconda3/envs/PicardTools/share/picard-2.26.1-0/picard.jar" #set come variabile il percorso per utilizzare il file picard.jar
 
-# faccio eseguire un ciclo FOR per convertire tutti i VCF in MAF
+# faccio eseguire un ciclo FOR per rinominare i file VCF
 
 for file in *.vcf
 do
