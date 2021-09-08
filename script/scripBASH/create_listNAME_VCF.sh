@@ -31,11 +31,4 @@ done
 # cat name_list.csv | tr  ',' '\t' > name_list.txt # converto il csv in txt
 ### dopo di che uso questo file per rinominare i file vcf
 
-#for file in *.vcf
-#do
-#	me=$(grep  -v "##" "$file" |  grep -v "chr" | awk -F ' ' '{print $10}') # prende l'id del paziente
-#	echo $me
-#	bcftools reheader -s name_list.txt "$file" -o RenameVCF/"$(echo $file | sed 's/Non-Filtered/Rename_xxx/g')" --threads 5
-	
-#done
 
