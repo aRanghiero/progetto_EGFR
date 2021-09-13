@@ -18,6 +18,7 @@ do
 	me=$(grep  -v "##" "$file" |  grep -v "chr" | awk -F ' ' '{print $10}') # prende l'id del paziente
 	echo $me
 	# filtro al 5%
-	bcftools view --min-af 0.05:nref "$file" --output-type v --output-file filt5%/"$(echo $file | sed 's/Non-Filtered/Filtered5/g')" --threads 5 
+	bcftools view --min-af 0.050:nref "$file" --output-type v --output-file filt5%/"$(echo $file | sed 's/xxx/Filtered5/g')" --threads 5 
+	
 
 done
