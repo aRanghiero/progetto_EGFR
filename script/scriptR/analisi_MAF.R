@@ -295,6 +295,6 @@ install.packages('pheatmap')
 library('pheatmap')
 pheatmap::pheatmap(mat = egfr.og30.cosm$cosine_similarities, cluster_rows = FALSE, main = "cosine similarity against validated signatures") # non funziona perchè si blocca la sessione
 # Finally plot signatures
-maftools::plotSignatures(nmfRes = egfr.sig, title_size = 1.2, sig_db = "legacy")
+maftools::plotSignatures(nmfRes = egfr.sig, title_size = 1.2, sig_db = "legacy", show_title = T)
 maftools::plotSignatures(nmfRes = egfr.sig, title_size = 1.2, sig_db = "SBS")
 # If you fancy 3D barpots, you can install barplot3d package and visualize the results with legoplot3d function.
