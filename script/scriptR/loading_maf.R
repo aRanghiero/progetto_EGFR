@@ -103,3 +103,25 @@ getClinicalData(merged_19)
 getClinicalData(merged_21)
 
 is.null(getClinicalData(merged_maf)) # controllo se ho dei valori nulli nei nomi dei campioni
+
+# carico una lista di nomi per suddividere i campioni nell'oncoplot tra EX19 e Ex21
+
+sample_tot <- read_csv(file = "NameFolder/sample_tot.csv", col_names = "sample_name", )
+sample_e19 <- read_csv(file = "NameFolder/sample_E19.csv", col_names = "sample_name", )
+sample_e21 <- read_csv(file = "NameFolder/sample_E21.csv", col_names = "sample_name", )
+sample_tot <- sample_tot$sample_name[-c(65, 122, 123)] # in questo modo elimino i "TRUE" che si trovano dentro la lista
+sample_e19 <- sample_e19$sample_name[-c(65)]
+sample_e21 <- sample_e21$sample_name[-c(57)]
+
+########### posso decidere di eliminare questi due MAF: 64_EGFR 21-S-000015, 6_EGFR 15-I-000801  ##############
+## per comodità riscrivo i file originali
+merged_maf <- subsetMaf(merged_maf, tsb = sample_tot[-c(9, 71)]) # in questo modo ho eliminato i due campioni con un elevato numerdo di mutazioni
+merged_19 <- subsetMaf(merged_19, tsb = sample_e19[-c(9)]) # elimino il campione 6_EGFR 15-I-000801
+merged_21 <- subsetMaf(merged_21, tsb = sample_e21[-c(7)]) # elimino il campione 64_EGFR 21-S-000015
+merged_maf.plus.cnfus <- subsetMaf(merged_maf.plus.cnfus, tsb = sample_tot[-c(9, 71)]) # in questo modo ho eliminato i due campioni con un elevato numerdo di mutazioni
+merged_19.plus.cnfus <- subsetMaf(merged_19.plus.cnfus, tsb = sample_e19[-c(9)]) # elimino il campione 6_EGFR 15-I-000801
+merged_21.plus.cnfus <- subsetMaf(merged_21.plus.cnfus, tsb = sample_e21[-c(7)]) # elimino il campione 64_EGFR 21-S-000015
+
+sample_tot <- sample_tot[-c(9, 71)]
+sample_e19 <- sample_e19[-c(9)]
+sample_e21 <- sample_e21[-c(7)]
